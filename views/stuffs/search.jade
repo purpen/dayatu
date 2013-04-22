@@ -1,0 +1,16 @@
+extends ../layout
+
+block sidebar
+	include ../includes/sidebar
+
+block main
+	#contentor.clearfix
+		each wp in stuffs
+			.wall-box
+				h3.wall-title= wp.title
+				a(href="/stuffs/#{wp.id}",title="#{wp.title}")
+					img.wp.alignnone(src="/srcfile/#{wp.asset_id}",width="320",height="480",alt="#{wp.title}")
+	if (pages > 1)
+		div.pagination.clearfix
+			ul
+				!= createPagination(pages, page)

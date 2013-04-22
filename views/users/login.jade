@@ -1,0 +1,21 @@
+extends ../base
+
+block main
+	form.form-horizontal.form-box(method="post",action="/session")
+		fieldset
+			legend Login to DaYaTu!
+			div.control-group
+				label.control-label(for="email") Account:
+				div.controls
+					input#email.input-xlarge(type="text", name="email", placeholder='Email')
+					p.help-block 你的账户名称，用于登录和显示
+			div.control-group
+				label.control-label(for="password") Password:
+				div.controls
+					input#password.input-xlarge(type="password", name="password", placeholder='Password')
+			div.control-group
+				div.controls
+					label.checkbox
+						input(type="checkbox") 
+						| Remember me
+					button.btn.btn-inverse.mt-20(type="submit") Submit

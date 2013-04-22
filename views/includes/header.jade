@@ -1,0 +1,44 @@
+div.navbar.navbar-inverse.navbar-fixed-top
+	div.navbar-inner
+		div.container
+			button.btn.btn-navbar(data-target=".nav-collapse",data-toggle="collapse",type="button")
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a.brand(href="/") DaYaTu
+			div.nav-collapse.collapse
+				if (req.isAuthenticated())
+					p.navbar-text.pull-right
+						a.navbar-link.upload-plus.mr-10(href="/upload", title="upload") +
+						a.navbar-link.mr-10(href="/users/"+req.user.id, title="Profile")= req.user.username
+						a.navbar-link(href="/logout", title="logout") Logout
+				else
+					p.navbar-text.pull-right
+						a.navbar-link.mr-10(href="/login") Login
+						a.navbar-link(href="/signup") Signup
+				ul.nav
+					if (menu == 'home')
+						li.active
+							a(href="/",title="Home") Home
+					else
+						li
+							a(href="/",title="Home") Home
+					if (menu == 'iphone')
+						li.active
+							a(href="/iphone",title="iPhone Wallpapers") iPhone Wallpapers
+					else
+						li
+							a(href="/iphone",title="iPhone Wallpapers") iPhone Wallpapers
+					if (menu == 'ipad')
+						li.active
+							a(href="/ipad",title="iPad Wallpapers") iPad Wallpapers
+					else
+						li
+							a(href="/ipad",title="iPad Wallpapers") iPad Wallpapers
+					if (menu == 'top50')
+						li.active
+							a(href="/top50",title="Top50") Top50
+					else
+						li
+							a(href="/top50",title="Top50") Top50
+						

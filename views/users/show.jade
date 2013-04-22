@@ -1,0 +1,10 @@
+extends ../base
+
+block main
+	#contentor.clearfix
+		.profile
+			h3 About me
+			
+			p= req.user.username
+			p= req.user.email
+			

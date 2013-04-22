@@ -1,0 +1,53 @@
+extends ../base
+
+block main
+	- var action = '/upload'
+	if (!stuff.isNew)
+		- action += '/'+stuff.id
+	form.form-horizontal.form-box(method="post",action=action,enctype="multipart/form-data")
+		if (!stuff.isNew)
+			input(type="hidden",name="_method",value="PUT")
+		fieldset
+			legend Upload the Wallpaper
+			div.control-group
+				label(class="control-label", for="tags") Photo:
+				.controls
+					div.fileupload.fileupload-new(data-provides="fileupload")
+						div.input-append
+							div.uneditable-input.span3
+								i.icon-file.fileupload-exists
+								span.fileupload-preview
+							span.btn.btn-file
+								span.fileupload-new Select file
+								span.fileupload-exists Change
+								input(type="file", name="image[]")
+			div.control-group
+				label.control-label(for="email") Title:
+				div.controls
+					input#title.input-xxlarge(type="text", name="title", placeholder='Title')
+			div.control-group
+				label(class="control-label", for="categories") Category:
+				.controls
+					each cat in Categories
+						label.checkbox.inline
+							input(type="checkbox", name="category_id", value="#{cat.id}")
+							| #{cat.name} (#{cat.zgname})
+			div.control-group
+				label(class="control-label", for="types") Types:
+				.controls
+					each ty in Types
+						label.radio.inline
+							input(type="radio", name="type_id", value="#{ty.id}")
+							| #{ty.name}
+			div.control-group
+				label(class="control-label", for="tags") Tags:
+				.controls
+					input#tags.input-xxlarge(type="text",name="tags",placeholder="")
+			div.control-group
+				label(class="control-label", for="body") Content:
+				.controls
+					div.textarea
+						textarea#stuff-body(style="width: 580px; height: 240px;",name="body")
+			div.control-group
+				div.controls
+					button.btn.btn-primary.mt-20(type="submit") Submit

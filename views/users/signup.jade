@@ -1,0 +1,26 @@
+extends ../base
+
+block main
+	form.form-horizontal.form-box(method="post",action="/signup")
+		fieldset
+			legend Signup to DaYaTu!
+			div.control-group
+				label.control-label(for="email") Account:
+				div.controls
+					input#email.input-xlarge(type="text",name="email",placeholder="Email address")
+					p.help-block 你的账户名称，用于登录和显示
+			div.control-group
+				label.control-label(for="username") Username:
+				div.controls
+					input#username.input-xlarge(type="text",name="username")
+			div.control-group
+				label.control-label(for="password") Password:
+				div.controls
+					input#password.input-xlarge(type="password",name="password")
+			div.control-group
+				label.control-label(for="password-repeat") Re-password:
+				div.controls
+					input#password-repeat.input-xlarge(type="password",name="password-repeat")
+			div.control-group
+				div.controls
+					button.btn.btn-inverse(type="submit") Signup

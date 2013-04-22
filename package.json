@@ -1,0 +1,25 @@
+{
+  "name": "dayatu",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon server.js"
+  },
+  "dependencies": {
+    "express": "3.1.0",
+    "jade": "*",
+	"mongoose": "latest", 
+	"gridfs-stream": "latest",
+    "connect-mongo": "latest", 
+    "connect-flash": "latest",
+	"passport": "latest",
+    "passport-local": "latest",
+	"underscore": "latest",
+	"dateformat": "1.0.3-1.2.3",
+	"gzippo": "latest",
+	"async": "latest",
+	"mime": "latest",
+	"gm": "latest",
+	"nodemon": "latest"
+  }
+}

@@ -1,0 +1,18 @@
+!!! 5
+html
+	include ./includes/head
+	body
+		.wrapper
+			include ./includes/header
+			.container
+				.row
+					.span3.sidebar
+						block sidebar
+					.span9
+						.ajax-message
+							block ajaxmsg
+						.main-content
+							block main
+				.push
+			include ./includes/footer
+			include ./includes/foot
