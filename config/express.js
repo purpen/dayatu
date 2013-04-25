@@ -59,6 +59,10 @@ module.exports = function (app, config, passport, access_log, error_log) {
 		app.use(function(err, req, res, next) {
 			if (~err.message.indexOf('not found')) return next()
 			
+			// 实现错误日志的响应
+			var meta = '[' + new Date() + ']' + req.url + '\n'
+			error_log.write(meta + err.stack + '\n')
+			
 			console.error(err.stack)
 			
 			// error page
@@ -70,14 +74,5 @@ module.exports = function (app, config, passport, access_log, error_log) {
 			res.status(404).render('404', { url: req.originalUrl })
 		})
 		
-	})
-	
-	// 实现错误日志的响应
-	app.configure('production', function(){
-		app.error(function(err, req, res, next) {
-			var meta = '[' + new Date() + ']' + req.url + '\n'
-			error_log.write(meta + err.stack + '\n')
-			next()
-		})
 	})
 }

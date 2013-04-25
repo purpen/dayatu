@@ -17,7 +17,7 @@ var env = process.env.NODE_ENV || 'development'
 mongoose.connect(config.db)
 
 // access/error logs
-console.log(config.access_log)
+// console.log(config.access_log)
 var access_log = fs.createWriteStream(config.access_log, {flags: 'a'})
   , error_log = fs.createWriteStream(config.error_log, {flags: 'a'})
 

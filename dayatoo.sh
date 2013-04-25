@@ -1,5 +1,4 @@
 #! /bin/sh
-
 NODE_ENV=production
 DAEMON="node cluster.js"
 NAME=Dayatu
@@ -18,6 +17,9 @@ case "$1" in
 		kill $pid
 		rm $PIDFILE
 		;;
+	status)
+	      ps -ef | grep dayatu
+	      ;;
 esac
 
 exit 0
