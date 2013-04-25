@@ -8,32 +8,32 @@ var express = require('express')
   , flash = require('connect-flash')
   , viewHelpers = require('../lib/middlewares/view')
 
-module.exports = function (app, config, passport) {
-	app.set('showStackError', true);
+module.exports = function (app, config, passport, access_log, error_log) {
+	app.set('showStackError', true)
 	// should be placed before express.static
 	app.use(express.compress({
 		filter: function (req, res) {
 			return /json|text|javascript|css/.test(res.getHeader('Content-Type'));
 		},
 		level: 9
-	}));
+	}))
 	
-	app.use(express.static(config.root + '/public'));
-	app.use(express.logger('dev'));
+	app.use(express.static(config.root + '/public'))
+	app.use(express.logger({stream: access_log}))
 	
 	//set views path, template engine and default layout
-	app.set('views', config.root + '/views');
-	app.set('view engine', 'jade');
+	app.set('views', config.root + '/views')
+	app.set('view engine', 'jade')
 	
 	app.configure(function () {
 		// dynamic helpers
 	    app.use(viewHelpers(config))
 		
 		// cookieParser should be above session
-		app.use(express.cookieParser('dayatoo'));
+		app.use(express.cookieParser('dayatoo'))
 		
-		app.use(express.bodyParser());
-		app.use(express.methodOverride());
+		app.use(express.bodyParser())
+		app.use(express.methodOverride())
 		
 		// express/mongo session storage
 		app.use(express.session({
@@ -42,33 +42,42 @@ module.exports = function (app, config, passport) {
 				url: config.db,
 				collection: 'sessions'
 			})
-		}));
+		}))
 		
 		// connect flash for flash messages
-		app.use(flash());
+		app.use(flash())
 		// use passport session
-	    app.use(passport.initialize());
-	    app.use(passport.session());
+	    app.use(passport.initialize())
+	    app.use(passport.session())
 		
-		app.use(express.favicon());
+		app.use(express.favicon())
 		
 		// routes should be at the last
-		app.use(app.router);
+		app.use(app.router)
 		
 		// assume 'not found' in the error msgs
 		app.use(function(err, req, res, next) {
-			if (~err.message.indexOf('not found')) return next();
+			if (~err.message.indexOf('not found')) return next()
 			
-			console.error(err.stack);
+			console.error(err.stack)
 			
 			// error page
-			res.status(500).render('500', { error: err.stack });
-		});
+			res.status(500).render('500', { error: err.stack })
+		})
 		
 		// assume 404 since no middleware responded
 		app.use(function(req, res, next){
-			res.status(404).render('404', { url: req.originalUrl });
-		});
+			res.status(404).render('404', { url: req.originalUrl })
+		})
 		
-	});
+	})
+	
+	// 实现错误日志的响应
+	app.configure('production', function(){
+		app.error(function(err, req, res, next) {
+			var meta = '[' + new Date() + ']' + req.url + '\n'
+			error_log.write(meta + err.stack + '\n')
+			next()
+		})
+	})
 }
