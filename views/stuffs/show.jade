@@ -10,6 +10,8 @@ block main
 				img.wp(class="alignnone",width="320",height="480",alt="#{stuff.title}",src="/srcfile/#{stuff.asset_id}")
 			.fl.single-stuff-info
 				h1= stuff.title
+				if (stuff.type_id == 1)
+					p iphone wallpapers
 				.stuff-tags
 					each tag in stuff.tags.split(',')
 						a(rel="tag",href="/tag/#{tag}")= tag

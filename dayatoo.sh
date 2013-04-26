@@ -23,3 +23,5 @@ case "$1" in
 esac
 
 exit 0
+
+# NODE_ENV=production node cluster.js
