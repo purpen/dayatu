@@ -46,7 +46,6 @@ exports.upload = function(req, res) {
  * Upload image to save.
  */
 exports.save = function(req, res) {
-	console.log(req.body)
 	var stuff = new Stuff(req.body)
 	stuff.uploadAndSave(req.files.image, function(err){
 		if(err){

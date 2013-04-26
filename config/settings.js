@@ -5,8 +5,8 @@ module.exports = {
 			name: '大牙兔'
 		},
 		db: 'mongodb://localhost/dayatu',
-		error_log: './error.log',
-		access_log: './access.log',
+		error_log: './dayatu_error.log',
+		access_log: './dayatu_access.log',
 		facebook: {
 			clientID: "APP_ID"
 			, clientSecret: "APP_SECRET"
@@ -19,8 +19,8 @@ module.exports = {
 			name: '大牙兔'
 		},
 		db: 'mongodb://localhost/dayatu',
-		error_log: '/var/log/error.log',
-		access_log: '/var/log/access.log',
+		error_log: '/var/log/dayatu_error.log',
+		access_log: '/var/log/dayatu_access.log',
 		facebook: {
 			clientID: "APP_ID"
 			, clientSecret: "APP_SECRET"
