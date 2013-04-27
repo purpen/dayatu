@@ -342,7 +342,10 @@ div.tagsinput input {
 div.tagsinput div { 
 	display:block; 
 	float: left; 
-} 
+}
+.dyt-cate {
+	width: 135px;
+}
 .tags_clear { 
 	clear: both; 
 	width: 100%; 

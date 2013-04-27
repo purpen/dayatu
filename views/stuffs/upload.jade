@@ -29,7 +29,7 @@ block main
 				label(class="control-label", for="categories") Category:
 				.controls
 					each cat in Categories
-						label.checkbox.inline
+						label.checkbox.inline.dyt-cate
 							input(type="checkbox", name="category_id", value="#{cat.id}")
 							| #{cat.name} (#{cat.zgname})
 			div.control-group
