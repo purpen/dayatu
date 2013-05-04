@@ -1099,6 +1099,12 @@
     padding-right: 10px;
     padding-left: 10px;
   }
+  .main-content {
+    margin-top: 0px;
+  }
+  .sidebar {
+	margin-top: 0px;
+  }
 }
 
 @media (min-width: 980px) {

@@ -2,17 +2,15 @@
 html
 	include ./includes/head
 	body
-		.wrapper
-			include ./includes/header
-			.container
-				.row
-					.span3.sidebar
-						block sidebar
-					.span9
-						.ajax-message
-							block ajaxmsg
-						.main-content
-							block main
-				.push
-			include ./includes/footer
-			include ./includes/foot
+		include ./includes/header
+		.container
+			.ajax-message
+				block ajaxmsg
+			.row
+				.span3.sidebar.bs-docs-sidebar
+					block sidebar
+				.span9.main-content
+					block main
+			.push
+		include ./includes/footer
+		include ./includes/foot

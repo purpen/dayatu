@@ -16,8 +16,7 @@ dayatoo.initial = function() {
 };
 
 
-
-$(document).ready(function () {
+$(document).ready(function () {	
 	$('#stuff-body').wysihtml5({
 		stylesheets: ["/css/wysiwyg-color.css"]
 	});

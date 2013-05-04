@@ -1,14 +1,13 @@
-.categories
-	.dycaty
+ul.categories.nav-list.bs-docs-sidenav
+	li.dycaty
 		img(src="/images/categories.gif")
-	ul.dynavlist
-		li.nav
-			a(href="/") All Wallpapers
-		each cate in Categories
-			li.nav
-				if (category && (cate.id == category.id))
-					a.active(href="/category/#{cate.id}",title="#{cate.name}")= cate.name
-				else
-					a(href="/category/#{cate.id}",title="#{cate.name}")= cate.name
+	li
+		a(href="/") All Wallpapers
+	each cate in Categories
+		li
+			if (category && (cate.id == category.id))
+				a.active(href="/category/#{cate.id}",title="#{cate.name}")= cate.name
+			else
+				a(href="/category/#{cate.id}",title="#{cate.name}")= cate.name
 	.copyright
 		address.ft10 Copyright &copy; 2013 - 2014 Dayatu.Com. All rights reserved.

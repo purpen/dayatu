@@ -1,7 +1,6 @@
 body {
 	background:url("/images/bg.gif") repeat scroll 0 0 transparent;
 	padding-bottom: 40px;
-	padding-top: 60px;
 }
 body, input, textarea {
     color: #666666;
@@ -176,17 +175,10 @@ h6 {
 	width: 800px;
 }
 
-.navbar .brand {
-	
-}
 .sidebar {
-	width: 260px;
-	background: url("/images/navigation_bg.png") no-repeat scroll 0 0 transparent;
-}
-.categories {
-	margin-bottom: 30px;
-    padding-left: 30px;
-    padding-top: 20px;
+	background-color:#000;
+	border-radius:10px;
+	margin-top: 60px;
 }
 .sidebar ul {
     list-style-type: none;
@@ -197,6 +189,10 @@ h6 {
     padding-left: 15px;
 	margin-bottom: 0;
 }
+.sidebar ul li.dycaty {
+	background:none;
+	padding-left: 0;
+}
 .sidebar ul li a {
     color: #777777;
     display: block;
@@ -204,42 +200,32 @@ h6 {
     margin: 0;
     padding: 0;
     text-decoration: none;
+	text-shadow: 0 0 0 rgba(255, 255, 255, 0.1);
 }
 .sidebar ul li a:hover, .sidebar ul li a.active{
-	background: url("/images/nav_over.gif") no-repeat scroll right 0 transparent;
 	color:#fff;
 }
 .sidebar .copyright {
 	margin-top: 50px;
 	color: #333333;
 }
-
-#contentor {
-    width: 780px;
-	color: #333333;
-    font-size: 16px;
-    line-height: 24px;
-	margin:0 auto;
+.main-content {
+	margin-top: 60px;
 }
 
 .wall-box {
-	margin-left: 40px;
 	margin-bottom: 40px;
-	width: 320px;
-	float: left;
+	background-color:#000;
+	border-radius:10px 10px 0 0;
+	max-width: 320px;
 }
 
 .wall-title {
-    background: url("/images/heading_bg.png") no-repeat scroll 0 0 transparent;
     color: #777777;
     font-size: 14px;
     padding: 10px 0;
 	margin: 0;
     text-align: center;
-}
-
-img.wp {
-	height: 480px;
 }
 
 .single-stuff {

@@ -1,0 +1,81 @@
+upstream backend_nodejs {
+  server 127.0.0.1:3000 max_fails=0 fail_timeout=10s;
+}
+
+server {
+  listen 80;
+  server_name www.dayatu.com;
+
+  client_max_body_size 16M;
+  keepalive_timeout 10;
+
+  location ~ ^/(images/|img/|javascript/|js/|css/|stylesheets/|flash/|media/|static/|robots.txt|humans.txt|favicon.ico) {
+      root /opt/project/dayatu/public;
+      access_log off;
+      expires max;
+  }
+	
+  location / {
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_next_upstream error timeout http_500 http_502 http_503 http_504;
+	
+	if ($http_user_agent ~* '(Android|webOS|iPhone|iPod|BlackBerry)') {
+	      set $mobile_request '1';
+	}
+	if ($http_cookie ~ 'mobile_request=full') {
+	      set $mobile_request '';
+	}
+	if ($mobile_request = '1') {
+	      rewrite ^.+ http://m.dayatu.com$uri;
+	}
+	
+	if (!-f $request_filename) {
+		proxy_pass http://backend_nodejs;
+		break;
+	}
+  }
+
+  access_log off;
+  error_log /dev/null crit;
+}
+
+###### Mobile Settings ###########
+upstream backend_mobile_nodejs {
+  server 127.0.0.1:3000 max_fails=0 fail_timeout=10s;
+}
+
+server {
+  listen 80;
+  server_name m.dayatu.com;
+
+  client_max_body_size 16M;
+  keepalive_timeout 10;
+
+  location ~ ^/(images/|img/|javascript/|js/|css/|stylesheets/|flash/|media/|static/|robots.txt|humans.txt|favicon.ico) {
+      root /opt/project/dayatu/public;
+      access_log off;
+      expires max;
+  }
+	
+  location / {
+	proxy_set_header X-Real-IP $remote_addr;
+    proxy_next_upstream error timeout http_500 http_502 http_503 http_504;
+
+	if ($http_user_agent ~* '(Android|webOS|iPhone|iPod|BlackBerry)') {
+	      set $mobile_request '1';
+	}
+	if ($http_cookie ~ 'mobile_request=full') {
+	      set $mobile_request '';
+	}
+	if ($mobile_request != '1') {
+	      rewrite ^.+ http://www.dayatu.com$uri;
+	}
+	
+    proxy_pass http://backend_mobile_nodejs;
+  }
+
+  access_log off;
+  error_log /dev/null crit;
+}
+
+

@@ -11,11 +11,12 @@ div.navbar.navbar-inverse.navbar-fixed-top
 					p.navbar-text.pull-right
 						a.navbar-link.upload-plus.mr-10(href="/upload", title="upload") +
 						a.navbar-link.mr-10(href="/users/"+req.user.id, title="Profile")= req.user.username
-						a.navbar-link(href="/logout", title="logout") Logout
+						a.navbar-link.mr-10(href="/logout", title="logout") Logout
 				else
 					p.navbar-text.pull-right
 						a.navbar-link.mr-10(href="/login") Login
 						a.navbar-link(href="/signup") Signup
+						
 				ul.nav
 					if (menu == 'home')
 						li.active
