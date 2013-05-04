@@ -229,20 +229,12 @@ h6 {
 }
 
 .single-stuff {
-	background: url("/images/post_bg.png") no-repeat scroll 0 0 transparent;
-    height: 481px;
+	background-color:#000;
+	border-radius:10px;
     margin-bottom: 30px;
     padding: 29px;
-    width: 622px;
-}
-.single-stuff .single-stuff-image {
-	height: 481px;
 }
 
-.single-stuff .single-stuff-info {
-	margin-left: 30px;
-	width: 270px;
-}
 .single-stuff .single-stuff-info h1 {
     color: #777777;
     font-size: 20px;
@@ -251,7 +243,6 @@ h6 {
 .single-stuff .single-stuff-info .stuff-tags {
     display: block;
     padding-top: 30px;
-    width: 270px;
 }
 .single-stuff .single-stuff-info .stuff-tags a {
     background: none repeat scroll 0 0 #242424;
