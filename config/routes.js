@@ -43,4 +43,11 @@ module.exports = function (app, passport, auth) {
 	var search = require('../app/controllers/search')
 	app.get('/tag/:tag', search.tag)
 	
+	// tools routes
+	var wptools = require('../app/controllers/wptools')
+	app.get('/wptools', wptools.index)
+	app.post('/wptools/uploads', wptools.upload)
+	app.post('/wptools/wpcrop', wptools.wpcrop)
+	app.get('/wptools/wpshow/:wp_file', wptools.wpshow)
+	
 }

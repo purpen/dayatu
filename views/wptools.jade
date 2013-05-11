@@ -6,12 +6,9 @@ html
 		.container
 			.ajax-message
 				block ajaxmsg
-			.row
-				.span3.sidebar.bs-docs-sidebar
-					block sidebar
-				.span9.main-content
-					block main
+			block main
 			.push
 		include ./includes/footer
 		include ./includes/foot
 		block ajax_privatejs
+			

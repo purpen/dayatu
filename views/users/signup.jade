@@ -1,14 +1,16 @@
 extends ../base
 
+block ajax_privatejs
+	script(src='/js/auth.js')
+
 block main
-	form.form-horizontal.form-box(method="post",action="/signup")
+	form#user-signup-frm.form-horizontal.form-box(method="post",action="/signup")
 		fieldset
 			legend Signup to DaYaTu!
 			div.control-group
 				label.control-label(for="email") Account:
 				div.controls
 					input#email.input-xlarge(type="text",name="email",placeholder="Email address")
-					p.help-block 你的账户名称，用于登录和显示
 			div.control-group
 				label.control-label(for="username") Username:
 				div.controls

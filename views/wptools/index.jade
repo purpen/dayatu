@@ -1,0 +1,49 @@
+extends ../wptools
+
+block ajax_privatejs
+	script(src='/js/wptools.js')
+
+block main
+	.ztools-container.clearfix
+		form#wp-form(action="/wptools/wpcrop", method="post")
+			input#wp_id(type="hidden",name="wp_id",value="-")
+			.span10.ztools-upload
+				#bootstrapped-fine-uploader
+			.crop-window.clearfix
+				.span2.clearfix
+					h4 #Step 1 &nbsp; Select the size
+					each wps in WPSize
+						a.wsize.mr-10(href="javascript:void(0);",title="#{wps.width}x#{wps.height}") #{wps.name} #{wps.width}x#{wps.height} 
+				.span7
+					h4 #Step 2 &nbsp; Move the red box, select the crop position
+					#select-area.frame
+				.span2
+					h4 #Step 3 &nbsp; Generate
+					.params-area.hidden
+						h6 Coordinates
+						input#wp_width(type="text",name="wp_width",value="-")
+						input#wp_height(type="text",name="wp_height",value="-")
+						label.coord
+							| X1:
+							input#x1.input-small(type="text",name="x1",value="-")
+						label.coord
+							| Y1:
+							input#y1.input-small(type="text",name="y1",value="-")
+						label.coord
+							| X2:
+							input#x2.input-small(type="text",name="x2",value="-")
+						label.coord
+							| Y2:
+							input#y2.input-small(type="text",name="y2",value="-")
+						h6 Dimensions
+						label.coord
+							| Width:
+							input#w.input-small(type="text",name="w",value="-")
+						label.coord
+							| Height:
+							input#h.input-small(type="text",name="h",value="-")
+					.tools-button
+						a#generate-submit.btn.btn-inverse.btn-large
+							i.icon-white.icon-picture
+							| &nbsp;Click to Crop
+				
