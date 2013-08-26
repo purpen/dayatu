@@ -5,7 +5,7 @@ var util = require('../../lib/middlewares/util')
  */
 
 exports.index = function (req, res) {
-	var page = req.param('page') > 0 ? req.param('page') : 0
+	var page = req.param('page') > 0 ? req.param('page') : 1
 	var perPage = 8
 	var options = {
 		perPage: perPage,
@@ -30,7 +30,7 @@ exports.index = function (req, res) {
  * Get category list.
  */
 exports.category = function (req, res) {
-	var id=req.param('id'),category=null, perPage=8, page=req.param('page')>0 ? req.param('page') : 0
+	var id=req.param('id'),category=null, perPage=8, page=req.param('page')>0 ? req.param('page') : 1
 	for(var i=0;i<Categories.length;i++){
 		//console.log("request_id:%d,id:%d,index:%d.",id,Categories[i].id,i)
 		if (Categories[i].id == parseInt(id)) category = Categories[i]
@@ -64,7 +64,7 @@ exports.category = function (req, res) {
  * Get iphone list.
  */
 exports.iphone = function (req, res) {
-	var id=req.param('id'),category=null, perPage=8, page=req.param('page')>0 ? req.param('page') : 0
+	var id=req.param('id'),category=null, perPage=8, page=req.param('page')>0 ? req.param('page') : 1
 	for(var i=0;i<Categories.length;i++){
 		if (Categories[i].id == parseInt(id)) category = Categories[i]
 	}
@@ -102,7 +102,7 @@ exports.iphone = function (req, res) {
  * Get ipad list.
  */
 exports.ipad = function (req, res) {
-	var id=req.param('id'),category=null, perPage=8, page=req.param('page')>0 ? req.param('page') : 0
+	var id=req.param('id'),category=null, perPage=8, page=req.param('page')>0 ? req.param('page') : 1
 	for(var i=0;i<Categories.length;i++){
 		if (Categories[i].id == parseInt(id)) category = Categories[i]
 	}
@@ -140,7 +140,7 @@ exports.ipad = function (req, res) {
  * Get ipad list.
  */
 exports.top50 = function (req, res) {
-	var page = req.param('page') > 0 ? req.param('page') : 0
+	var page = req.param('page') > 0 ? req.param('page') : 1
 	var perPage = 8
 	var options = {
 		perPage: perPage,

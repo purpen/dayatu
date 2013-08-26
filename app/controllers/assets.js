@@ -23,7 +23,7 @@ exports.thumb = function(req, res){
 			// 异常出错，显示默认图
 			fileData = fs.readFileSync(config.root+'/public/images/default-560x560px.jpg');
 		}
-		db.close()
+		//db.close()
 		
 		res.contentType("image/jpeg")
 		res.send(fileData)
@@ -52,8 +52,7 @@ exports.srcfile = function(req, res){
 					// 异常出错，显示默认图
 					fileData = fs.readFileSync(config.root+'/public/images/default-560x560px.jpg')
 				}
-				db.close()
-
+				
 				res.contentType("image/jpeg")
 				res.send(fileData)
 			})

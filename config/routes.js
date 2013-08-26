@@ -50,4 +50,12 @@ module.exports = function (app, passport, auth) {
 	app.post('/wptools/wpcrop', wptools.wpcrop)
 	app.get('/wptools/wpshow/:wp_file', wptools.wpshow)
 	
+	// api routes
+	var api = require('../app/controllers/api')
+	app.get('/api/all', api.all)
+	app.get('/api/archive', api.archive)
+	app.get('/api/top', api.top)
+	app.get('/api/like', api.like)
+	app.get('/api/categories', api.categories)
+	
 }

@@ -143,16 +143,20 @@ StuffSchema.statics = {
 	list: function(options, cb) {
 		var criteria = options.criteria || {}
 		var sortby = options.sortby || {'create_at': -1}
-
+		if (options.page == 1){
+			var skipCount = 0;
+		}else{
+			var skipCount = (options.page - 1) * options.perPage;
+		}
+		
 	    this.find(criteria)
 	      .sort(sortby) // sort by date
 	      .limit(options.perPage)
-	      .skip(options.perPage * options.page)
+	      .skip(skipCount)
 	      .exec(cb)
 	},
 	
 	inc_visits: function(id) {
-		console.log("stuff[%s] inc view_count. ", id)
 		this.update({_id: id}, {$inc:{'view_count': 1}}).exec()
 	}
 }

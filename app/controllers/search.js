@@ -17,7 +17,7 @@ exports.search = function(req, res){
 exports.tag = function(req, res){
 	var tag = req.param('tag')
 	console.log("search tag[%s] list", tag)
-	var page = req.param('page') > 0 ? req.param('page') : 0
+	var page = req.param('page') > 0 ? req.param('page') : 1
 	var perPage = 5
 	var options = {
 		criteria: {'tags':tag},
