@@ -1,6 +1,6 @@
 module.exports = {
     development: {
-		domain: 'http://127.0.0.1:3000',
+		domain: 'http://www.dayatu.com',
 		root: require('path').normalize(__dirname + '/..'),
 		app: {
 			name: '大牙兔'
